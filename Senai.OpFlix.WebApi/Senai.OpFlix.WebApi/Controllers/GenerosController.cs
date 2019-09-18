@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai.OpFlix.WebApi.Domains;
@@ -16,12 +17,14 @@ namespace Senai.OpFlix.WebApi.Controllers
     {
         GeneroRepository GeneroRepository = new GeneroRepository();
 
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult ListarTodos()
         {
             return Ok(GeneroRepository.Listar());
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Generos genero)
         {
@@ -36,6 +39,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
@@ -45,6 +49,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok(genero);
         }
 
+        [Authorize(Roles = "1")]
         [HttpPut("{id}")]
         public IActionResult Atualizar(Generos genero, int id)
         {

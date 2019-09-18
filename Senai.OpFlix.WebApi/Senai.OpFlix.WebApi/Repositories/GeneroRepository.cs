@@ -12,7 +12,7 @@ namespace Senai.OpFlix.WebApi.Repositories
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                return ctx.Favoritos.ToList();
+                return ctx.Generos.ToList();
             }
         }
 
@@ -20,7 +20,7 @@ namespace Senai.OpFlix.WebApi.Repositories
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                ctx.Favoritos.Add(genero);
+                ctx.Generos.Add(genero);
                 ctx.SaveChanges();
             }
         }
@@ -29,7 +29,7 @@ namespace Senai.OpFlix.WebApi.Repositories
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                return ctx.Favoritos.FirstOrDefault(x => x.IdGenero == id);
+                return ctx.Generos.FirstOrDefault(x => x.IdGenero == id);
             }
         }
 
@@ -37,9 +37,9 @@ namespace Senai.OpFlix.WebApi.Repositories
         {
             using (OpFlixContext ctx = new OpFlixContext())
             {
-                Generos GeneroBuscado = ctx.Favoritos.FirstOrDefault(x => x.IdGenero == genero.IdGenero);
+                Generos GeneroBuscado = ctx.Generos.FirstOrDefault(x => x.IdGenero == genero.IdGenero);
                 GeneroBuscado.Nome = genero.Nome;
-                ctx.Favoritos.Update(GeneroBuscado);
+                ctx.Generos.Update(GeneroBuscado);
                 ctx.SaveChanges();
             }
         }

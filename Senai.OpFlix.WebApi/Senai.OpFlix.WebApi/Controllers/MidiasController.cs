@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai.OpFlix.WebApi.Domains;
@@ -15,12 +16,14 @@ namespace Senai.OpFlix.WebApi.Controllers
     {
         MidiaRepository MidiaRepository = new MidiaRepository();
 
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult ListarTodos()
         {
             return base.Ok(MidiaRepository.Listar());
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Midias midia)
         {
@@ -35,6 +38,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
@@ -44,6 +48,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             return Ok(midia);
         }
 
+        [Authorize(Roles = "1")]
         [HttpPut("{id}")]
         public IActionResult Atualizar(Midias midia, int id)
         {

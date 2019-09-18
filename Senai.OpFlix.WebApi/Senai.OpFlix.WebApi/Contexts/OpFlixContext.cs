@@ -16,7 +16,7 @@ namespace Senai.OpFlix.WebApi.Domains
         }
 
         public virtual DbSet<Cadastros> Cadastros { get; set; }
-        public virtual DbSet<Generos> Favoritos { get; set; }
+        public virtual DbSet<Generos> Generos { get; set; }
         public virtual DbSet<Midias> Midias { get; set; }
         public virtual DbSet<Novidades> Novidades { get; set; }
         public virtual DbSet<Plataformas> Plataformas { get; set; }
